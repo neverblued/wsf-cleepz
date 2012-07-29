@@ -13,4 +13,6 @@
   :author "Дмитрий Пинский <demetrius@neverblued.info>"
   :depends-on (#:wsf #:cleepz)
   :serial t
-  :components ((:file "wsf-cleepz")))
+  :components ((:file "package")
+               (:file "server")
+               (:file "tools")))

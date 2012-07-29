@@ -2,15 +2,14 @@
 ;; Допускаю использование и распространение согласно
 ;; LLGPL -> http://opensource.franz.com/preamble.html
 
-(in-package #:wsf)
+(in-package #:wsf-cleepz)
+
+(defmacro with-view-server (this &body body)
+  `(let ((view-docroot (server-pathname ,this)))
+     ,@body))
 
 (defclass view-server (docroot-server) ())
 
-(defmethod respond ((server view-server) request)
-  (let ((cleepz:view-docroot (server-pathname server)))
+(defmethod respond ((this view-server) request)
+  (with-view-server this
     (call-next-method)))
-
-(defun view-docroot/ (&rest relative-path-chunks)
-  (cleepz:parse-view-file (apply #'docroot/ relative-path-chunks)))
-
-(export '(view-server view-docroot/))
