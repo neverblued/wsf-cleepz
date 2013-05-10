@@ -8,11 +8,8 @@
 (in-package #:wsf-cleepz-system)
 
 (defsystem "wsf-cleepz"
-  :description "Web Site Framework templating module"
-  :version "0.1"
-  :author "Дмитрий Пинский <demetrius@neverblued.info>"
+  :version "0.2"
   :depends-on (#:wsf #:cleepz)
   :serial t
   :components ((:file "package")
-               (:file "server")
-               (:file "tools")))
+               (:file "server")))

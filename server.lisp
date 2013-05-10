@@ -4,9 +4,23 @@
 
 (in-package #:wsf-cleepz)
 
+(defun view-docroot/ (&rest relative-path-chunks)
+  (parse-view-file (apply #'docroot/ relative-path-chunks)))
+
+(defparameter view-home
+  (user-homedir-pathname))
+
+(defgeneric view-home (server))
+
+(defmethod view-home (this)
+  (server-pathname this))
+
 (defmacro with-view-server (this &body body)
-  `(let ((view-docroot (server-pathname ,this)))
+  `(let ((view-home (view-home ,this)))
      ,@body))
+
+(defun view/ (&rest relative-path-chunks)
+  (parse-view-file (apply #'join `(,view-home ,@relative-path-chunks))))
 
 (defclass view-server (docroot-server) ())
 

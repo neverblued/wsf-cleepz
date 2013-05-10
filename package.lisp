@@ -3,9 +3,9 @@
 ;; LLGPL -> http://opensource.franz.com/preamble.html
 
 (defpackage #:wsf-cleepz
-  (:use #:cl #:wsf #:cleepz)
+  (:use #:cl #:blackjack #:wsf #:cleepz)
   (:export
-                                        ; server
-   #:view-server #:with-view-server
-                                        ; tools
-   #:view-docroot/))
+                                        ; api
+   #:view-server #:view-home #:view/
+                                        ; misc
+   #:with-view-server #:view-docroot/))
