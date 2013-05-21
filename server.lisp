@@ -13,7 +13,7 @@
 (defgeneric view-home (server))
 
 (defmethod view-home (this)
-  (server-pathname this))
+  (pathname (join (server-pathname this) "/")))
 
 (defmacro with-view-server (this &body body)
   `(let ((view-home (view-home ,this)))
